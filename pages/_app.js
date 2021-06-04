@@ -1,7 +1,13 @@
-import '../styles/globals.css'
+import propTypes from 'prop-types';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+import 'bootstrap/dist/css/bootstrap.css';
+import '../styles/globals.css';
 
-export default MyApp
+const App = ({ Component, pageProps })  =>  <Component {...pageProps} />;
+
+App.propTypes = {
+	Component: propTypes.object.isRequired,
+	pageProps: propTypes.shape().isRequired,
+};
+
+export default App;
