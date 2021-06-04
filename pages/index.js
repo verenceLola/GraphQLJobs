@@ -1,9 +1,27 @@
-const Home = () => {
+import propTypes from 'prop-types';
+
+import SearchJob from '../components/SearchJob';
+
+const Home = ({availableJobs}) => {
+	console.log({availableJobs});
+	
 	return (
-		<div className='container-fluid'>
+		<>
+			<SearchJob />
+			<div className='container-fluid'>
 			This is the Home Page
-		</div>
+			</div>
+		</>
+		
 	);
+};
+
+Home.propTypes = {
+	availableJobs: propTypes.arrayOf(propTypes.shape())
+};
+
+Home.defaultProps = {
+	availableJobs: []
 };
 
 
