@@ -6,7 +6,7 @@ import '../styles/globals.css';
 const App = ({ Component, pageProps })  =>  <Component {...pageProps} />;
 
 App.propTypes = {
-	Component: propTypes.object.isRequired,
+	Component: propTypes.func.isRequired,
 	pageProps: propTypes.shape().isRequired,
 };
 
