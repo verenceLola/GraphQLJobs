@@ -1,14 +1,10 @@
+import propTypes from 'prop-types';
 import { useState } from 'react';
 
-const SearchJob = () => {
+const SearchJob = ({handleOnSearch}) => {
 	const [location, setLocation] = useState('');
 
 	const handleOnChange = ({target: {value}}) => setLocation(value);
-	
-
-	const handleOnSearch = () => {
-		console.log('Searching jobs', location);
-	};
 
 	return (
 		<div className='container-fluid'>
@@ -17,10 +13,14 @@ const SearchJob = () => {
 			</div>
 			<div className='input-group input-group-sm mb-3'>
 				<input type='text' className='form-control shadow-none' onChange={handleOnChange} placeholder='Enter job location' aria-label='Enter Job Location' aria-describedby='basic-addon-1' />
-				<span className='input-group-text' onClick={handleOnSearch} role='button' id='basic-addon-1'>Search</span>
+				<span className='input-group-text' onClick={() => handleOnSearch(location)} role='button' id='basic-addon-1'>Search</span>
 			</div>
 		</div>
 	);
+};
+
+SearchJob.propTypes = {
+	handleOnSearch: propTypes.func.isRequired,
 };
 
 export default SearchJob;
