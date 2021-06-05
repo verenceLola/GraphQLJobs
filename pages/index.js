@@ -1,16 +1,19 @@
 import propTypes from 'prop-types';
 import { useState } from 'react';
 
-import Job from '../components/Job';
-import SearchJob from '../components/SearchJob';
+import filterJobs from '../lib/filterJobs';
 import fetchJobs from './api/job';
 
-const Home = ({jobs}) => {
-	const [filteredJobs, setFilteredJobs] = useState(jobs);
+import Job from '../components/Job';
+import SearchJob from '../components/SearchJob';
+
+const Home = ({jobsData}) => {
+	const [jobs, setJobs] = useState(jobsData);
 
 	const handleOnSearch = location => {
-		console.log({location});
-		console.log({jobs})
+		const filteredJobs = location ? filterJobs(jobsData, location) : jobsData;
+		
+		setJobs(filteredJobs);
 	};
 
 	return (
@@ -39,13 +42,13 @@ const getServerSideProps = async ()  => {
 
 	return {
 		props: {
-			jobs: data.jobs
+			jobsData: data.jobs
 		}
 	};
 };
 
 Home.propTypes = {
-	jobs: propTypes.arrayOf(propTypes.shape())
+	jobsData: propTypes.arrayOf(propTypes.shape())
 };
 
 Home.defaultProps = {
