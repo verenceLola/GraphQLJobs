@@ -13,7 +13,7 @@ const SearchJob = ({handleOnSearch}) => {
 	};
 
 	return (
-		<div className='container-fluid'>
+		<div className='container mb-2'>
 			<div className='text-center m-3'>
 				<p className='h5'>Enter a location to search for the available Jobs</p>
 			</div>
