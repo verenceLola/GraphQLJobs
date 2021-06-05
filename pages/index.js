@@ -1,28 +1,57 @@
 import propTypes from 'prop-types';
+import { useState } from 'react';
 
+import Job from '../components/Job';
 import SearchJob from '../components/SearchJob';
+import fetchJobs from './api/job';
 
-const Home = ({availableJobs}) => {
-	console.log({availableJobs});
-	
+const Home = ({jobs}) => {
+	const [filteredJobs, setFilteredJobs] = useState(jobs);
+
+	const handleOnSearch = location => {
+		console.log({location});
+		console.log({jobs})
+	};
+
 	return (
 		<>
-			<SearchJob />
+			<SearchJob handleOnSearch={handleOnSearch} />
 			<div className='container-fluid'>
-			This is the Home Page
+				{
+					jobs.map( job => (
+						<Job details={job} key={job.id} />
+					))
+				}
 			</div>
 		</>
 		
 	);
 };
 
+const getServerSideProps = async ()  => {
+	const {data, errors} = await fetchJobs();
+
+	if (!data || errors){
+		return {
+			notFound: true
+		};
+	}
+
+	return {
+		props: {
+			jobs: data.jobs
+		}
+	};
+};
+
 Home.propTypes = {
-	availableJobs: propTypes.arrayOf(propTypes.shape())
+	jobs: propTypes.arrayOf(propTypes.shape())
 };
 
 Home.defaultProps = {
-	availableJobs: []
+	jobs: []
 };
 
 
+export {getServerSideProps};
 export default Home;
