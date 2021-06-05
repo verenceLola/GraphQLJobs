@@ -4,7 +4,7 @@ import { useState } from 'react';
 const SearchJob = ({handleOnSearch}) => {
 	const [location, setLocation] = useState('');
 
-	const handleOnChange = ({target: {value}}) => setLocation(value);
+	const handleOnChange = ({target: {value}}) => setLocation(value.toLowerCase().trim());
 
 	const handleOnKeyDown = ({keyCode}) => {
 		if (keyCode == 13){
