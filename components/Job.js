@@ -58,7 +58,24 @@ const Job = ({details}) => {
 };
 
 Job.propTypes = {
-	details: propTypes.shape({}).isRequired,
+	details: propTypes.shape({
+		applyUrl: propTypes.string.isRequired,
+		company: propTypes.shape({
+			logoUrl: propTypes.string,
+			name: propTypes.string.isRequired,
+		}).isRequired,
+		title: propTypes.string.isRequired,
+		tags: propTypes.arrayOf(propTypes.shape({
+			id: propTypes.string.isRequired,
+			name: propTypes.string.isRequired,
+		})).isRequired,
+		cities: propTypes.arrayOf(propTypes.shape({
+			name: propTypes.string.isRequired,
+			country: propTypes.shape({
+				name: propTypes.string.isRequired
+			})
+		})),
+	}).isRequired,
 };
 
 
