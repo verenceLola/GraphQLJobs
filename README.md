@@ -16,4 +16,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deployments
 
-For ease of access, the project is also deployed [here]()
+For ease of access, the project is also deployed [here](https://graphql-jobs-eight.vercel.app)

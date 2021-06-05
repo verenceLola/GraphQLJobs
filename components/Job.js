@@ -19,7 +19,7 @@ const Job = ({details}) => {
 	};
 
 	return (
-		<div className='card mb-2' role='button' onClick={() => parent.open(details.applyUrl)}>
+		<div className='card mb-2'>
 			<div className='card-body'>
 				<div className='container'>
 					<div className='row'>

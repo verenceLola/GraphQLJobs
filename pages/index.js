@@ -5,6 +5,7 @@ import { filterJobs } from '../lib/jobs';
 import fetchJobs from './api/job';
 
 import Job from '../components/Job';
+import Head from 'next/head';
 import SearchJob from '../components/SearchJob';
 
 const Home = ({jobsData}) => {
@@ -17,17 +18,22 @@ const Home = ({jobsData}) => {
 	};
 
 	return (
-		<div className='d-flex flex-column p-2 vh-100'>
-			<SearchJob handleOnSearch={handleOnSearch} />
-			<div className='container overflow-auto h-100'>
-				{
-					jobs.map( job => (
-						<Job details={job} key={job.id} />
-					))
-				}
+		<>
+			<Head>
+				<title>Available Jobs</title>
+				<link rel='icon' href="/favicon.ico" />
+			</Head>
+			<div className='d-flex flex-column p-2 vh-100'>
+				<SearchJob handleOnSearch={handleOnSearch} />
+				<div className='container overflow-auto h-100'>
+					{
+						jobs.map( job => (
+							<Job details={job} key={job.id} />
+						))
+					}
+				</div>
 			</div>
-		</div>
-		
+		</>
 	);
 };
 
