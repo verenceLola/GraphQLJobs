@@ -5,7 +5,7 @@ const fetchJobs = async () => {
 	const query = gql`
       query jobs{
         jobs{
-          id , title , slug , commitment {
+          id , title, commitment {
             title
           } , cities {
             name
@@ -17,8 +17,9 @@ const fetchJobs = async () => {
             type
           } , company{
             name
+            logoUrl
           } , locationNames , tags{
-            name
+            name, id
           } , applyUrl , postedAt
         }
       }`;

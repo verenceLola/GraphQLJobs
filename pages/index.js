@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import { useState } from 'react';
 
-import filterJobs from '../lib/filterJobs';
+import { filterJobs } from '../lib/jobs';
 import fetchJobs from './api/job';
 
 import Job from '../components/Job';
