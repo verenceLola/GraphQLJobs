@@ -43,7 +43,7 @@ const Job = ({details}) => {
 							<div className='d-flex  align-items-center'>
 								<div className='d-flex align-items-center justify-content-center'>
 									{details.cities[0] && <ReactCountryFlag countryCode={getCountryCode(details.cities[0]?.country.name)} svg />}
-									<small className='text-muted mx-2'>{details.cities.map(({name}) => name).join(', ')}</small>
+									<small className='text-muted mx-2'>{details.cities.length !== 0 ? details.cities.map(({name}) => name).join(', ') : 'Remote'}</small>
 								</div>
 							</div>
 						</div>
