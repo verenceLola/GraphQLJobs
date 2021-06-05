@@ -32,9 +32,9 @@ const Home = ({jobsData}) => {
 };
 
 const getServerSideProps = async ()  => {
-	const {data, errors} = await fetchJobs();
+	const {data} = await fetchJobs();
 
-	if (!data || errors){
+	if (!data){
 		return {
 			notFound: true
 		};
